@@ -37,4 +37,8 @@ public class AccountService implements BaseCRUDService<Account, AccountFilter> {
     public Account findAccountByUsername(String username) {
         return accountRepository.findAccountByUsername(username);
     }
+
+    public Account create(Account account) {
+        return accountRepository.save(account);
+    }
 }
