@@ -18,6 +18,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Configuration
 public class SpringBootRestApplication extends SpringBootServletInitializer {
     private static Logger springLogger = LoggerFactory.getLogger(SpringBootRestApplication.class);
+
     public static void main(String[] args) {
         SpringApplication.run(SpringBootRestApplication.class, args);
         springLogger.info("Successfully started application: " + SpringBootRestApplication.class.getSimpleName());

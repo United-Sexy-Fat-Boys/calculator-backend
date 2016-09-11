@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 /**
  * Info about account from client
  */
-public class AccountDTO extends BaseAccountDTO{
+public class AccountDTO extends BaseAccountDTO {
     private String password;
 
     public String getPassword() {
