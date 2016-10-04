@@ -6,7 +6,7 @@ import com.calculator.repository.BaseRepositoryImpl;
 import com.querydsl.core.BooleanBuilder;
 
 /**
- * Account repository impl
+ * Category repository impl
  */
 public class AccountRepositoryImpl
         extends BaseRepositoryImpl<Account, AccountFilter>

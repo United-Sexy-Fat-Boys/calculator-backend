@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 
 /**
- * Repository for Account
+ * Repository for Category
  */
 public interface AccountRepository
         extends JpaRepository<Account, Long>,
@@ -16,10 +16,10 @@ public interface AccountRepository
         AccountRepositoryCustom {
 
     /**
-     * Find Account by username
+     * Find Category by username
      *
      * @param name username
-     * @return Account
+     * @return Category
      */
     Account findAccountByUsername(String name);
 }

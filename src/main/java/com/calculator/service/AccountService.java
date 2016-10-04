@@ -29,10 +29,10 @@ public class AccountService implements BaseCRUDService<Account, AccountFilter> {
     }
 
     /**
-     * Find Account by username
+     * Find Category by username
      *
      * @param username username
-     * @return Account
+     * @return Category
      */
     public Account findAccountByUsername(String username) {
         return accountRepository.findAccountByUsername(username);
