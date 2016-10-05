@@ -1,14 +1,20 @@
-package com.calculator.dto.product;
+package com.calculator.model;
 
-import com.calculator.dto.BaseDTO;
-import com.calculator.model.Category;
-import com.calculator.model.Product;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.hibernate.Hibernate;
 
-public abstract class BaseProductDTO extends BaseDTO<Product> {
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table
+public class Dish extends PersistentObject {
+
     private String name;
 
+    @OneToOne
     private Category category;
 
     public String getName() {
@@ -29,20 +35,24 @@ public abstract class BaseProductDTO extends BaseDTO<Product> {
 
     @Override
     public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+
         if (this == o) {
             return true;
         }
 
-        if (!(o instanceof BaseProductDTO)) {
+        if (Hibernate.getClass(this) != Hibernate.getClass(o)) {
             return false;
         }
 
-        BaseProductDTO that = (BaseProductDTO) o;
+        Dish category = (Dish) o;
 
         return new EqualsBuilder()
                 .appendSuper(super.equals(o))
-                .append(getName(), that.getName())
-                .append(getCategory(), that.getCategory())
+                .append(getName(), category.getName())
+                .append(getCategory(), category.getCategory())
                 .isEquals();
     }
 
@@ -50,12 +60,8 @@ public abstract class BaseProductDTO extends BaseDTO<Product> {
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .appendSuper(super.hashCode())
+                .append(getName())
                 .append(getCategory())
                 .toHashCode();
-    }
-
-    @Override
-    protected Class<Product> getEntityClass() {
-        return Product.class;
     }
 }

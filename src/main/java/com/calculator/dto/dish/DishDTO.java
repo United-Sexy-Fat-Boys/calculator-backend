@@ -1,20 +1,23 @@
-package com.calculator.dto.product;
+package com.calculator.dto.dish;
 
-import com.calculator.dto.BaseDTO;
 import com.calculator.model.Category;
-import com.calculator.model.Product;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public abstract class BaseProductDTO extends BaseDTO<Product> {
+/**
+ * Info about Dish
+ */
+public class DishDTO extends BaseDishDTO {
     private String name;
 
     private Category category;
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -33,11 +36,11 @@ public abstract class BaseProductDTO extends BaseDTO<Product> {
             return true;
         }
 
-        if (!(o instanceof BaseProductDTO)) {
+        if (!(o instanceof DishDTO)) {
             return false;
         }
 
-        BaseProductDTO that = (BaseProductDTO) o;
+        DishDTO that = (DishDTO) o;
 
         return new EqualsBuilder()
                 .appendSuper(super.equals(o))
@@ -50,12 +53,8 @@ public abstract class BaseProductDTO extends BaseDTO<Product> {
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .appendSuper(super.hashCode())
+                .append(getName())
                 .append(getCategory())
                 .toHashCode();
-    }
-
-    @Override
-    protected Class<Product> getEntityClass() {
-        return Product.class;
     }
 }

@@ -1,12 +1,13 @@
-package com.calculator.dto.product;
+package com.calculator.dto.dish;
 
 import com.calculator.dto.BaseDTO;
 import com.calculator.model.Category;
+import com.calculator.model.Dish;
 import com.calculator.model.Product;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
-public abstract class BaseProductDTO extends BaseDTO<Product> {
+public abstract class BaseDishDTO extends BaseDTO<Dish> {
     private String name;
 
     private Category category;
@@ -33,11 +34,11 @@ public abstract class BaseProductDTO extends BaseDTO<Product> {
             return true;
         }
 
-        if (!(o instanceof BaseProductDTO)) {
+        if (!(o instanceof BaseDishDTO)) {
             return false;
         }
 
-        BaseProductDTO that = (BaseProductDTO) o;
+        BaseDishDTO that = (BaseDishDTO) o;
 
         return new EqualsBuilder()
                 .appendSuper(super.equals(o))
@@ -50,12 +51,13 @@ public abstract class BaseProductDTO extends BaseDTO<Product> {
     public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .appendSuper(super.hashCode())
+                .append(getName())
                 .append(getCategory())
                 .toHashCode();
     }
 
     @Override
-    protected Class<Product> getEntityClass() {
-        return Product.class;
+    protected Class<Dish> getEntityClass() {
+        return Dish.class;
     }
 }
