@@ -72,8 +72,4 @@ public class CategoryController extends BaseController {
         return convertToDto(categoryService.create(convertToEntity(categoryDTO, Category.class)), CategoryViewDTO.class);
     }
 
-    @RequestMapping(value = "logout", method = RequestMethod.POST)
-    public void signout() {
-        //for sign in
-    }
 }
